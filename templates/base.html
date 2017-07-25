@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} | Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" type="text/css">
+  </head>
+
+  <body>
+
+  <div class="container col-md-6 col-md-offset-6">
+    <h1 style="text-align:left;">
+    <a id="links" href="{{ url_for('index') }}">URL Shortener</a>
+    <span style="float:right;"><a id="links" href="{{ url_for('stats') }}"> Stats </a></span>
+    </h1>
+
+    {% block content %}
+
+    {% endblock %}
+
+  </div>
+
+  <div class="container col-md-6 col-md-offset-6">
+      <footer>
+          <p>Made with <3 by <a id="cb" href="https://www.coralbeef.com/" target="_blank">CoralBeef</a> 2017</p>
+      </footer>
+  </div>
+
+  </body>
+</html>

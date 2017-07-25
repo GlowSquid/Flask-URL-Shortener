@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+    <div id="url-bar">
+        <h3 style="text-align: left;"> Shorten your URL, not your life</h3>
+        <form action="{{ url_for('index') }}" class="form" method="post">
+        {% for field in form %}
+            <input name=_csrf_token type=hidden value="{{ csrf_token() }}" />
+            {% for error in field.errors %}<span class="help-block">{{ error }}</span>{% endfor %}
+            <div class="input-group{% if field.errors %} has-error has-feedback{% endif %}">
+                    {{ field.label(class='control-label') }}
+                    {{ field(placeholder=" Enter full URL" ) }}
+        {% endfor %}
+        <button type="submit" class="btn btn-primary" style="border-radius: 0">Shorten URL &raquo;</button>
+        </div>
+        </form>
+    </div>
+
+{% endblock %}

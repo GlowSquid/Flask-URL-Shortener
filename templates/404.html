@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}404{% endblock %}
+{% block content %}
+
+    <div id="url-bar" class="text-center">
+        <h3>404 - Page not found</h3>
+        <h5>Hmm, this redirect does not exist.<br>Shorten another URL <a id="cb" href="{{ url_for('index') }}">here</a>.</h5>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Success{% endblock %}
+{% block content %}
+
+<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+<script src="{{ url_for('static', filename="js/clipboard.min.js") }}"></script>
+
+<script>
+$(document).ready(function(){
+    var clipboard = new Clipboard('.copy-link');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+
+    $(".copy-link").click(function(e){
+        e.preventDefault();
+        var btnHref = $(this).attr('href')
+        var item = $(this)
+        item.text("Copied!")
+        item.removeClass('btn-primary')
+        item.addClass('btn-success')
+
+        setTimeout(function(){
+            item.text("Copy")
+            item.removeClass('btn-success')
+            item.addClass('btn-primary')
+        }, 2500)
+    })
+})
+</script>
+
+    <div id="url-bar">
+        <h3> Your URL was successfully shortened!</h3>
+          <div class="input-group">
+           <span class="input-group-btn">
+                <a class='btn btn-primary copy-link' style="color: aqua; border-radius: 0;" data-clipboard-text='{{ url_for('index', _external=True) }}{{ code }}'>Copy</a>
+           </span>
+           <input style="border-radius: 0;" class='form-control' type='text' value='your.url/{{ code }}' />
+          </div>
+          <div class="col-xs-12" id="redirect">Redirects to: {{ old }}</div>
+    </div>
+
+{% endblock %}

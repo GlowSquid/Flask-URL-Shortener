@@ -1,0 +1,67 @@
+html {
+    height:100%
+}
+
+body {
+    background:#000 url('/static/images/nebula-front.png');
+    background-size: cover;
+    padding-top: 20px;
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+
+}
+
+h1,h2,h3,h5,p,span,a,i,tr,th,td,input,#redirect {
+    font-family: Ubuntu, sans-serif, Arial, Helvetica;
+}
+
+h1,h2,h3,h5,p,span,a,i,th,td {
+    color: white;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    border: 0;
+}
+
+th {
+    background-color: green;
+}
+
+table {
+    background-color: #320042;
+    opacity: 0.6;
+}
+
+#url-bar {
+    text-align: left;
+    padding-top: 30%
+}
+
+#redirect {
+    background-color: #320050;
+    opacity: 0.6;
+    text-align: left;
+    color: white;
+}
+
+#list {
+    color: white;
+    font-weight: bold;
+}
+
+#cb {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px white solid;
+}
+
+#links:hover {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px white solid;
+}
