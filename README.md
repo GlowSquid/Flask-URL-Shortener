@@ -1,6 +1,6 @@
 # Flask URL-Shortener
 
-
+![](https://github.com/coralbeef/Flask-URL-Shortener/blob/master/screenshots.gif)
 
 ## Setup
 * Create a virtualenv
