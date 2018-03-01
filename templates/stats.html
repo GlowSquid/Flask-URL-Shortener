@@ -27,7 +27,7 @@
     </div>
 
     <div class="container">
-        <div class="col-xs-12 text-center">
+        <div class="col-xs-12 text-center"><p style="color:gray">
         {% if stats.has_prev %}
             <a href="{{url_for('stats',page=stats.prev_num)}}">&lt;&lt; Newer </a>
         {% else %}
@@ -39,7 +39,7 @@
         {% else %}
             Older &gt;&gt;
         {% endif %}
-    </div>
+        </p></div>
     </div>
 
 {% endblock %}

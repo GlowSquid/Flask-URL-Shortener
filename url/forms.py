@@ -2,8 +2,9 @@ import wtforms
 from wtforms import validators
 # from flask_wtf.recaptcha import RecaptchaField
 
+
 class UrlForm(wtforms.Form):
-    old = wtforms.StringField('', validators=[validators.DataRequired(' URL\'s can\'t be that short!')])
+    old = wtforms.StringField('', validators=[validators.DataRequired(' If URL\'s were that short, would you even be here?')])
     # recaptcha = RecaptchaField()
 
     def save_url(self, url):
