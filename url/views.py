@@ -1,34 +1,39 @@
-# import os
 import string
 from random import choice
-from flask import render_template, request, redirect, abort
+from flask import render_template, request, redirect, abort, send_from_directory
 from app import app, db
 from url.forms import UrlForm
 from url.models import Url
+from settings import STATIC_DIR
 
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    def gen():
-        chars = string.ascii_letters + string.digits
-        length = 3
-        code = ''.join(choice(chars) for x in range(length))
-        print("verifying", code)
-        exists = db.session.query(db.exists().where(Url.new == code)).scalar()
-        if not exists:
-            print("Your new code is:", code)
-            return code
-    code = gen()
-    while code is None:
+
+    if request.method == 'POST':
+        def gen():
+            chars = string.ascii_letters + string.digits
+            length = 3
+            code = ''.join(choice(chars) for x in range(length))
+            print("Checking", code)
+            exists = db.session.query(
+                db.exists().where(Url.new == code)).scalar()
+            if not exists:
+                print("Your new code is:", code)
+                return code
         code = gen()
+        while code is None:
+            code = gen()
 
     if request.method == 'POST' and code is not None:
         form = UrlForm(request.form)
-        if form.validate():
+        if form.validate_on_submit():
             url = form.save_url(Url(new=code))
             db.session.add(url)
             db.session.commit()
             return render_template("success.html", code=code, old=url.old)
+        else:
+            print("Validation failed")
     else:
         form = UrlForm()
     return render_template("index.html", form=form)
@@ -56,3 +61,8 @@ def stats(page=1):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+
+@app.route('/favicon.ico')
+def static_from_root():
+    return send_from_directory(STATIC_DIR, request.path[1:])

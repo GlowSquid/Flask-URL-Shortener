@@ -1,45 +1,46 @@
-{% extends 'base.html' %}
-{% block title %}All Submissions{% endblock %}
-{% block content %}
-    <div style="padding-top: 10%">
+{% extends 'base.html' %} {% block title %}All Submissions{% endblock %} {%
+block content %}
+<div class="content">
+  <table class="table">
+    <tr>
+      <!-- <th>ID</th> -->
+      <th class="th-1">New URL</th>
+      <th>Old URL</th>
+      <th class="th-3">Hits</th>
+      <!--    <th>Created</th> -->
+    </tr>
+    {% for url in stats.items %}
+    <tr>
+      <!-- <td>{{ url.id }}</td> -->
+      <td>
+        <img src="{{ url_for('static', filename="chain.svg") }}" width=16px
+        alt=""> /<a
+          href="{{ url_for('index') }}{{ url.new }}"
+          target="_blank"
+          >{{ url.new }}</a
+        >
+      </td>
+      <td class="old-url">
+        <img
+          src="https://www.google.com/s2/favicons?domain={{ url.old }}"
+          alt="favicon"
+        />
+        <a href="{{ url.old }}" target="_blank">{{ url.old }}</a>
+      </td>
+      <td class="td-3">{{ url.hits }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
 
-    <table class="table">
-        <tr>
-            <th>ID</th>
-            <th>New URL</th>
-            <th>Old URL</th>
-            <th>Active</th>
-            <th>Total Hits</th>
-        <!--    <th>Created</th> -->
-        </tr>
-        {% for url in stats.items %}
-        <tr>
-            <td>{{ url.id }}</td>
-            <td><a href="{{ url_for('index') }}{{ url.new }}" target="_blank">{{ url.new }}</a></td>
-            <td><a href="{{ url.old }}">{{ url.old | truncate(85) }}</a></td>
-            <td>{{ url.active }}</td>
-            <td>{{ url.hits }}</td>
-        <!--    <td>{{ url.created }}</td> -->
-        </tr>
-        {% endfor %}
-
-    </table>
-    </div>
-
-    <div class="container">
-        <div class="col-xs-12 text-center"><p style="color:gray">
-        {% if stats.has_prev %}
-            <a href="{{url_for('stats',page=stats.prev_num)}}">&lt;&lt; Newer </a>
-        {% else %}
-            &lt;&lt; Newer
-        {% endif %}
-
-        {% if stats.has_next %}
-            <a href="{{url_for('stats',page=stats.next_num)}}">Older &gt;&gt;</a>
-        {% else %}
-            Older &gt;&gt;
-        {% endif %}
-        </p></div>
-    </div>
+<div style="text-align: center; padding-top: 5px; font-weight: 600;">
+  <p style="color:#777">
+    {% if stats.has_prev %}
+    <a href="{{url_for('stats',page=stats.prev_num)}}">&lt;&lt; Newer </a>
+    {% else %} &lt;&lt; Newer {% endif %} {% if stats.has_next %}
+    <a href="{{url_for('stats',page=stats.next_num)}}">Older &gt;&gt;</a>
+    {% else %} Older &gt;&gt; {% endif %}
+  </p>
+</div>
 
 {% endblock %}
