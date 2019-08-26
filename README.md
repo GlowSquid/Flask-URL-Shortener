@@ -1,5 +1,7 @@
 # Flask URL-Shortener
 
+![Live Demo](https://glowsquid.com/url/)
+
 ## Features
 
 - Shortens URLs to a default 3-digit prefix using a random character and letter combination.
