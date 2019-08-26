@@ -1,6 +1,6 @@
 # Flask URL-Shortener
 
-![Live Demo](https://glowsquid.com/url/)
+[Live Demo](https://glowsquid.com/url/)
 
 ## Features
 
