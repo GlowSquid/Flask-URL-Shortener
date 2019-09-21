@@ -1,6 +1,6 @@
 # Flask URL-Shortener
 
-[Live Demo](https://glowsquid.com/url/)
+[Live Demo](https://glowsquid.com/url/) (on a not-so-short URL)
 
 ## Features
 
@@ -21,9 +21,8 @@
 - Update settings.py with your own MySQL credentials
 - Create the database in MySQL `CREATE DATABASE shortener;`
 - Run `python create_db.py` to setup the table
-- Lastly, alter the database in MySQL to make characters case-sensitive:
+- Lastly, alter the MySQL table to allow case-sensitive characters:
 
-`ALTER DATABASE shortener CHARACTER SET utf8 COLLATE utf8_bin;`
 `ALTER TABLE url CONVERT TO CHARACTER SET utf8 COLLATE utf8_bin;`
 
 Run the app with `python main.py`

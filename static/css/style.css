@@ -137,13 +137,19 @@ input {
   border-radius: 0;
 }
 
+input[type="submit"] {
+  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
 .btn {
   white-space: nowrap;
   background-color: #4caf50;
   border: none;
   padding: 5px;
   color: #fafafa;
-  border-radius: 0%;
+  border-radius: 0;
 }
 
 .btn__copy {
